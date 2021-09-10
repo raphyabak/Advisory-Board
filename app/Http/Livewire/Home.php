@@ -18,6 +18,7 @@ class Home extends Component
     public $open = false;
     public $advisor;
     public $adviser;
+    public $dprogramme = [];
 
     protected $rules = [
         'name' => 'required',
@@ -35,7 +36,44 @@ class Home extends Component
         // $this->advisor = User::where('department', $this->department)->get();
         $this->advisor = User::role('Advisor')->where('department', $this->department)->get();
 
-        // dd($this->advisor);
+        if ($this->department == 'Mathematical Sciences') {
+            $this->dprogramme = [
+                'Computer Science',
+                'Mathematics',
+                'Statistics',
+                ];
+        } elseif ($this->department == 'Biological Sciences') {
+            $this->dprogramme = ['Botany',
+            'Microbiology',
+            'Zoology',
+
+            ];
+        }elseif ($this->department == 'Physical Sciences') {
+            $this->dprogramme = ['Physics',
+                'Geophysics',
+            ];
+        }elseif ($this->department == 'Food Sciences') {
+            $this->dprogramme = [
+                'Food Science and Technology',
+            ];
+        } elseif ($this->department == 'Agriculture Sciences') {
+            $this->dprogramme = ['Agriculture Economics and Extension',
+                'Animal Production & Health',
+                'Crop, Soil and Pest Management',
+                'Fisheries and Aquaculture',
+                'Forestory, Wildlife and Environmental Management',
+            ];
+        }
+         elseif ($this->department == 'Chemical Sciences')  {
+            $this->dprogramme = ['Industial Chemistry',
+                'Biochemistry',
+            ];
+        }else {
+            $this->dprogramme = ['Civil Engineering',
+                'Electrical / Electronic Engineering',
+                'Mechanical Engineering',
+            ];
+        }
     }
 
     public function mount()

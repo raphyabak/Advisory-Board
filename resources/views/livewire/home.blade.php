@@ -117,26 +117,9 @@
                     <select id="programme" name="programme" wire:model='programme'
                         class="block w-full h-12 px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md @error('programme') border-red-500 @enderror shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         <option>Select Programme</option>
-                        <option value="Botany">Botany</option>
-                        <option value="Biochemistry">Biochemistry</option>
-                        <option value="Computer Science">Computer Science</option>
-                        <option value="Geophysics">Geophysics</option>
-                        <option value="Industial Chemistry">Industial Chemistry</option>
-                        <option value="Mathematics">Mathematics</option>
-                        <option value="Microbiology">Microbiology</option>
-                        <option value="Physics">Physics</option>
-                        <option value="Statistics">Statistics</option>
-                        <option value="Zoology">Zoology</option>
-                        <option value="Agriculture Economics and Extension">Agriculture Economics and Extension</option>
-                        <option value="Animal Production & Health">Animal Production & Health</option>
-                        <option value="Crop, Soil and Pest Management">Crop, Soil and Pest Management</option>
-                        <option value="Fisheries and Aquaculture">Fisheries and Aquaculture</option>
-                        <option value="Forestory, Wildlife and Environmental Management">Forestory, Wildlife and
-                            Environmental Management</option>
-                        <option value="Food Science and Technology">Food Science and Technology</option>
-                        <option value="Civil Engineering">Mathematics</option>
-                        <option value="Electrical / Electronic Engineering">Electrical / Electronic Engineering</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        @foreach ($dprogramme as $programme)
+                        <option value="{{$programme}}">{{$programme}}</option>
+                        @endforeach
                     </select>
                     @error('programme')
                         <span class="flex items-center mt-1 ml-1 text-xs font-bold tracking-wide text-red-500">
