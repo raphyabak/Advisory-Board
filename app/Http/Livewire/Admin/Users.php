@@ -15,6 +15,7 @@ class Users extends Component
     public $email;
     public $level;
     public $department;
+    public $programme;
     public $password;
     public $role;
 
@@ -25,11 +26,11 @@ class Users extends Component
         'role' => 'required'
     ];
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
 
-    }
+    // }
 
     public function addUser()
     {
@@ -41,6 +42,7 @@ class Users extends Component
             'email' => $this->email,
             'level' => $this->level,
             'department' => $this->department,
+            'programme' => $this->programme,
             'password' => Hash::make($this->password),
         ]);
 

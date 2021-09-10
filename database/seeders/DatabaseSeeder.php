@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
       $user =  \App\Models\User::create([
             'name' => 'Raphael Abayomi',
             'email' => 'raphyabak@gmail.com',
-            'password' => Hash::make(abakraphy),
+            'password' => Hash::make('abakraphy'),
         ]);
 
-        $user->assignRole($this->role);
+        $user->assignRole('Admin');
 
     }
 }

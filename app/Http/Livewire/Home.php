@@ -13,6 +13,7 @@ class Home extends Component
     public $email;
     public $level;
     public $department;
+    public $programme;
     public $password;
     public $open = false;
     public $advisor;
@@ -24,6 +25,7 @@ class Home extends Component
         'password' => ['required'],
         'level' => 'required',
         'department' => 'required',
+        'programme' => 'required',
         'adviser' => 'required',
     ];
 
@@ -42,7 +44,7 @@ class Home extends Component
         if (Auth::check()) {
             $this->name = auth()->user()->name;
             $this->email = auth()->user()->email;
-            // $this->address = auth()->user()->address;
+            $this->level = auth()->user()->level;
             // $this->phone = auth()->user()->phone;
         }
     }
@@ -62,6 +64,7 @@ class Home extends Component
                 'email' => $this->email,
                 'level' => $this->level,
                 'department' => $this->department,
+                'programme' => $this->programme,
                 'password' => Hash::make($this->password),
             ]);
 
@@ -79,6 +82,7 @@ class Home extends Component
                 'password' => ['required'],
                 'level' => 'required',
                 'department' => 'required',
+                'programme' => 'required',
                 'adviser' => 'required',
             ]);
 
@@ -106,6 +110,7 @@ class Home extends Component
                 'email' => 'required|string|email|max:255',
                 'level' => 'required',
                 'department' => 'required',
+                'programme' => 'required',
                 'adviser' => 'required',
             ]);
             session()->put('adviser', $this->adviser);

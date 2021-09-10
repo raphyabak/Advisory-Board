@@ -48,12 +48,21 @@
                 View Messages
             @endauth
         </a>
+        @guest
+        <div class="mx-4 my-3">
+            <a href="#signgUp"
+                class="inline-block px-6 py-2 text-lg font-medium leading-6 text-center text-gray-700 transition bg-transparent border-2 border-gray-500 rounded ripple hover:bg-gray-200 focus:outline-none">
+                Sign Up
+            </a>
+        </div>
+        @endguest
+
 
         @auth
-            <form class="mx-4" method="POST" action="{{ route('logout') }}">
+            <form class="mx-4 my-3" method="POST" action="{{ route('logout') }}">
                 @csrf
                 <a href="route('logout')" onclick="event.preventDefault();
-                     this.closest('form').submit();"
+                         this.closest('form').submit();"
                     class="inline-block px-6 py-2 text-lg font-medium leading-6 text-center text-gray-700 transition bg-transparent border-2 border-gray-500 rounded ripple hover:bg-gray-200 focus:outline-none">
                     Logout {{ auth()->user()->name }}
                 </a>
@@ -73,7 +82,7 @@
                 <p class="mb-10 text-lg font-light text-gray-500 md:text-xl md:tracking-relaxed md:mb-4">where you can
                     interact with your advisers.</p>
             </div>
-            <div class="col-auto md:col-span-5">
+            <div id="signgUp" class="col-auto md:col-span-5">
                 @livewire('home')
                 @guest
                     <p class="text-xs text-center text-gray-600">By signing up you agree to our <a href="#"

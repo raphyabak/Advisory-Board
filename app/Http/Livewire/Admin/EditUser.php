@@ -12,6 +12,7 @@ class EditUser extends Component
     public $email;
     public $level;
     public $department;
+    public $programme;
     public $password;
     public $role;
     public $roles;
@@ -23,11 +24,11 @@ class EditUser extends Component
         'role' => 'required',
     ];
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName);
 
-    }
+    // }
 
     public function mount()
     {
@@ -36,6 +37,7 @@ class EditUser extends Component
         $this->email = $this->user->email;
         $this->level = $this->user->level;
         $this->department = $this->user->department;
+        $this->programme = $this->user->programme;
         $this->role = $this->user->getRoleNames();
         // dd($this->role->permissions);
     }
@@ -52,6 +54,7 @@ class EditUser extends Component
                 'email' => $this->email,
                 'level' => $this->level,
                 'department' => $this->department,
+                'programme' => $this->programme,
                 'password' => Hash::make($this->password),
             ]);
 
@@ -61,6 +64,7 @@ class EditUser extends Component
                 'email' => $this->email,
                 'level' => $this->level,
                 'department' => $this->department,
+                'programme' => $this->programme,
             ]);
 
         }

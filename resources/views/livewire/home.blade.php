@@ -5,16 +5,17 @@
                 <div x-data="{open : true}">
                     <div x-show="open" class="flex p-4 bg-red-200">
                         <div class="mr-4">
-                            <div
-                                class="flex items-center justify-center w-12 h-12 text-white bg-red-600 rounded-full">
+                            <div class="flex items-center justify-center w-12 h-12 text-white bg-red-600 rounded-full">
                                 {{-- <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7" />
                                 </svg> --}}
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                  </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
                             </div>
                         </div>
                         <div class="flex justify-between w-full">
@@ -28,8 +29,8 @@
                                 </p>
                             </div>
                             <button type="button" @click="open = false">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hover:bg-red-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hover:bg-red-400" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M6 18L18 6M6 6l12 12" />
                                 </svg>
@@ -40,7 +41,15 @@
             @endif
         </div>
         <div class="px-6 py-8 space-y-4 border-b border-gray-200">
-
+            <div class="mx-auto my-3 text-center">
+                <h2 class="text-2xl font-bold leading-tight text-gray-900">@guest
+                    Sign Up
+                @endguest
+                @auth
+                    Connect Advisor
+                @endauth
+             </h2>
+            </div>
             <div class="grid grid-cols-6 gap-6 pt-4">
                 <div class="col-span-12 sm:col-span-6">
                     <label for="name" class="block text-sm font-medium text-gray-700">
@@ -103,6 +112,39 @@
                     @enderror
                 </div>
 
+                <div class="col-span-12 sm:col-span-6">
+                    <label for="programme" class="block text-sm font-medium text-gray-700">Programme</label>
+                    <select id="programme" name="programme" wire:model='programme'
+                        class="block w-full h-12 px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md @error('programme') border-red-500 @enderror shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option>Select Programme</option>
+                        <option value="Botany">Botany</option>
+                        <option value="Biochemistry">Biochemistry</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Geophysics">Geophysics</option>
+                        <option value="Industial Chemistry">Industial Chemistry</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Microbiology">Microbiology</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Statistics">Statistics</option>
+                        <option value="Zoology">Zoology</option>
+                        <option value="Agriculture Economics and Extension">Agriculture Economics and Extension</option>
+                        <option value="Animal Production & Health">Animal Production & Health</option>
+                        <option value="Crop, Soil and Pest Management">Crop, Soil and Pest Management</option>
+                        <option value="Fisheries and Aquaculture">Fisheries and Aquaculture</option>
+                        <option value="Forestory, Wildlife and Environmental Management">Forestory, Wildlife and
+                            Environmental Management</option>
+                        <option value="Food Science and Technology">Food Science and Technology</option>
+                        <option value="Civil Engineering">Mathematics</option>
+                        <option value="Electrical / Electronic Engineering">Electrical / Electronic Engineering</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    </select>
+                    @error('programme')
+                        <span class="flex items-center mt-1 ml-1 text-xs font-bold tracking-wide text-red-500">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
                 @if ($open)
                     <div class="col-span-12 sm:col-span-6">
                         <label for="adviser" class="block text-sm font-medium text-gray-700">Course Advisor</label>
@@ -123,16 +165,16 @@
                 @endif
 
                 @guest
-                <div class="col-span-12 sm:col-span-6">
-                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" wire:model='password' name="password" id="password" autocomplete="given-name"
-                        class="block w-full h-12 px-3 py-2 mt-1 bg-white border border-gray-300 @error('password') border-red-500 @enderror rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    @error('password')
-                        <span class="flex items-center mt-1 ml-1 text-xs font-bold tracking-wide text-red-500">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
+                    <div class="col-span-12 sm:col-span-6">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" wire:model='password' name="password" id="password" autocomplete="given-name"
+                            class="block w-full h-12 px-3 py-2 mt-1 bg-white border border-gray-300 @error('password') border-red-500 @enderror rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        @error('password')
+                            <span class="flex items-center mt-1 ml-1 text-xs font-bold tracking-wide text-red-500">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
                 @endguest
 
 
@@ -142,7 +184,9 @@
                 class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-gray-600 border border-transparent rounded-md shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:ml-3 sm:w-auto sm:text-sm">
                 Save
             </button> --}}
-            <button type="submit" class="w-full px-16 py-2 mr-2 text-base font-medium text-white transition duration-500 ease-in-out transform bg-gray-600 border-gray-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-800 "> Get Advisory </button>
+            <button type="submit"
+                class="w-full px-16 py-2 mr-2 text-base font-medium text-white transition duration-500 ease-in-out transform bg-gray-600 border-gray-600 rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-800 ">
+                Get Advisory </button>
         </div>
         <!-- <div class="px-6 py-4 card-body">
 
